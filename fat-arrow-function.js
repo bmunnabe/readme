@@ -1,3 +1,8 @@
+// --------------------------------------------------------------------------------------------//
+//                                   FAT ARROW function                                        //
+// --------------------------------------------------------------------------------------------//
+
+
 // In JS this refers to the OBJECT or from where it has been caled
 // In below example, method called via object obj. So this will be refer to obj Object.
 // And also issue on below example is method will be pushed to queue,
@@ -37,3 +42,32 @@ function Munna() {
 }
 obj = new Munna();
 obj.printAge()
+
+
+// --------------------------------------------------------------------------------------------//
+//                                 ASYNC AWAIT function                                        //
+// --------------------------------------------------------------------------------------------//
+
+    let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits'; 
+    fetch(url)
+    .then(response => response.json())
+    .then(
+      commits => console.log(commits[0].author.login)
+    );
+
+    async function munna(){
+      let response = await fetch(url);
+      let commits = await response.json(); // read response body and parse as JSON
+      console.log(commits[0].author);
+    }
+    
+    // asyn on fat arrow
+    const munna = async () => {
+      let response = await fetch(url);
+      let commits = await response.json(); // read response body and parse as JSON
+      console.log(commits[0].author);
+    }
+    
+    munna();
+    
+ 
