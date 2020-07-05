@@ -1,0 +1,28 @@
+1. Start Zookeeper:
+----------------
+c:\kafka>.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+
+2. Start Server :
+----------------
+c:\kafka>.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+3. Creating TOPICS :
+--------------------
+c:\kafka>.\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic MunnaHelloWorldTopic
+
+
+4. To check list of TOPICS :
+---------------------------
+c:\kafka>.\bin\windows\kafka-topics.bat --list --zookeeper localhost:2181
+
+
+5. Send Message to TOPICS : (Producer)
+--------------------------------------
+c:\kafka>.\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic MunnaHelloWorldTopic
+
+
+6. Get message from TOPICS :(Consumer)
+--------------------------------------
+c:\kafka>.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic MunnaHelloWorldTopic --from-beginning
