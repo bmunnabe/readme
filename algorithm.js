@@ -40,3 +40,7 @@ const sortingArray = ( arr ) => {
   return arr;
 }
 // console.log( sortingArr( [ 2, 4, 5, 1, 3, 5, 8 ]) ); , Output : [1, 2, 3, 4, 5, 5, 8]
+
+
+const isEvenOrOdd = ( n ) => n % 2 ? 'ODD' : 'EVEN';
+// console.log( isEvenOrOdd( 2 ) ) Output : EVEN
