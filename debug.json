@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        // To debug node js application on VS
+        {
+            "name": "BFF",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "nodemon",
+            "runtimeArgs": ["run-script", "--inspect"],
+            "port": 9229        // this is required
+        },
+        // To debug unit test cases js application on VS
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Jest watch current file",
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+            "args": [
+              "${fileBasename}",
+              "--verbose",
+              "-i",
+              "--no-cache",
+              "--watchAll"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+    ]
+}
