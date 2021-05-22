@@ -67,6 +67,8 @@ function countingAnagrams( words ) {
     finalArr.push( countMap[ reduceItem ].map( item => words[ item ] ) );
   }
   return finalArr;
+
+  // return finalArr.reduce( ( acc, item ) => item.length > 1 ? acc + 1 : acc, 0 ); OUTPUT : 2 (since str, a are anagrams)
 }
 
 countingAnagrams( 'str', 'rst', 'a', 'a', 'b' ) // output [ [ "str","rst" ], [ "a","a" ],[ "b" ] ]
