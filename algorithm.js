@@ -44,3 +44,53 @@ const sortingArray = ( arr ) => {
 
 const isEvenOrOdd = ( n ) => n % 2 ? 'ODD' : 'EVEN';
 // console.log( isEvenOrOdd( 2 ) ) Output : EVEN
+
+function CountingAnagrams( str ) {
+      debugger;
+      const words = str.split(' ');
+      let sortedWords = words.map( item => item.split('').sort().join('') );
+      let uniqueWords = [ ...new Set( sortedWords ) ];
+      let countMap = {};
+
+      for ( let item of uniqueWords ) {
+        let arrIndex = sortedWords.reduce( ( acc, word, index ) => {
+          if ( item === word ) {
+            acc.push(index);
+          }
+          return acc;
+        }, [] );
+        countMap[ item ] = arrIndex;
+      }
+
+      let finalArr = [];
+      for ( let reduceItem in countMap ) {
+        finalArr.push( countMap[ reduceItem ].map( item => words[ item ] ) );
+      }
+      return finalArr;
+}
+
+
+// Count Anagrams
+        function countingAnagrams( words ) {
+          let sortedWords = words.map( item => item.split('').sort().join('') );
+          let uniqueWords = [ ...new Set( sortedWords ) ];
+          let countMap = {};
+
+          for ( let item of uniqueWords ) {
+            let arrIndex = sortedWords.reduce( ( acc, word, index ) => {
+              if ( item === word ) {
+                acc.push(index);
+              }
+              return acc;
+            }, [] );
+            countMap[ item ] = arrIndex;
+          }
+
+          let finalArr = [];
+          for ( let reduceItem in countMap ) {
+            finalArr.push( countMap[ reduceItem ].map( item => words[ item ] ) );
+          }
+          return finalArr;
+        }
+
+countingAnagrams( 'str', 'rst', 'a', 'a', 'b' ) // output [ [ "str","rst" ], [ "a","a" ],[ "b" ] ]
