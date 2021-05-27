@@ -72,3 +72,82 @@ function countingAnagrams( words ) {
 }
 
 countingAnagrams( 'str', 'rst', 'a', 'a', 'b' ) // output [ [ "str","rst" ], [ "a","a" ],[ "b" ] ]
+
+
+
+var data = [
+  { name: 'users' , parent : null },
+  { name: 'distalx' , parent : 'users' },
+  { name: 'guest' , parent : 'users' },
+  { name: 'shared' , parent : 'users' },
+  { name: 'documents' , parent : 'distalx' },
+  { name: 'music' , parent : 'distalx' },
+  { name: 'desktop' , parent : 'distalx' },
+  { name: 'javascript' , parent : 'documents' },
+  { name: 'funjs' , parent : 'documents' },
+  { name: 'functions' , parent : 'documents' }
+];
+
+
+const sortDirectories= ( arr, parent ) => {
+  const output = [];
+  arr
+  .filter( ( item ) => item.parent === parent )
+  .forEach( ( item ) => {
+    const itemCopy = item;
+    itemCopy.child = sortDirectories( arr, item.name );
+    return output.push( itemCopy );
+  })
+  return output;
+}
+console.log( sortDirectories( data, null ) );
+
+/*
+output : result 
+[{
+  "name": "users",
+  "parent": null,
+  "child": [
+      { "name": "distalx",
+        "parent": "users",
+        "child": [
+            { "name": "documents",
+              "parent": "distalx",
+              "child": [
+                  { "name": "javascript",
+                    "parent": "documents",
+                    "child": []
+                  },
+                  { "name": "funjs",
+                    "parent": "documents",
+                    "child": []
+                  },
+                  { "name": "functions",
+                    "parent": "documents",
+                    "child": []
+                  }
+              ]
+            },
+            { "name": "music",
+              "parent": "distalx",
+              "child": []
+            },
+            { "name": "desktop",
+              "parent": "distalx",
+              "child": []
+            }
+        ]
+      },
+      {
+        "name": "guest",
+        "parent": "users",
+        "child": []
+      },
+      {
+        "name": "shared",
+        "parent": "users",
+        "child": []
+      }
+  ]
+}]
+*/
