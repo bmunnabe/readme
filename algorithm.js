@@ -12,6 +12,20 @@ const findMinimum = ( arr ) => {
 // findMinimum( [ 2, 4, 5, 6, 7, 10, 1, 19, 39] ), Output : 1
 
 
+function getMaxTwoNumber( arr ) {
+  let max = 0;
+  let nextMax = 0;
+
+  for ( const val of arr ) {
+    if ( val > max ) {
+      [ nextMax, max ] = [ max, val ];
+    } else if ( val < max && val > nextMax ) {
+      nextMax = val;
+    }
+  }
+  return [ max, nextMax ];
+}
+//getMaxTwoNumber( [ 1, 3,4,5,6,7,9,16, 12,7,1,67,8, 81 ] ), OUTPUT : [ 81, 67 ]
 
 const sortingArray = ( arr ) => {
   for ( let i = 0; i < arr.length; i++ ) {
