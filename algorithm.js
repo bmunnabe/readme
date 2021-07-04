@@ -27,6 +27,20 @@ function getMaxTwoNumber( arr ) {
 }
 //getMaxTwoNumber( [ 1, 3,4,5,6,7,9,16, 12,7,1,67,8, 81 ] ), OUTPUT : [ 81, 67 ]
 
+
+var findValueInArray = ( arr, value ) => {
+    let result;
+    for( let index = 0; index < arr.length; index++ ) {
+      if ( arr[ index ] === value ) {
+        result = { value : arr[ index ], index }
+        break;
+      }
+    }
+    return result;
+}
+
+
+
 const sortingArray = ( arr ) => {
   for ( let i = 0; i < arr.length; i++ ) {
     let currentItem = arr[ i ];
