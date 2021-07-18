@@ -145,15 +145,12 @@ var data = [
 ];
 
 
-const sortDirectories= ( arr, parent ) => {
+const sortDirectories= ( myArray, parent ) => {
   const output = [];
-  arr
-  .filter( ( item ) => item.parent === parent )
-  .forEach( ( item ) => {
-    const itemCopy = item;
-    itemCopy.child = sortDirectories( arr, item.name );
-    return output.push( itemCopy );
-  })
+  myArray
+    .filter( ( item ) => item.parent === parent )
+    .forEach( ( item ) => output.push( { ...item, child : sortDirectories( arr, item.name ) } ) )
   return output;
 }
+
 console.log( sortDirectories( data, null ) );
