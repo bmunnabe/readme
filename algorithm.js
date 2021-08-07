@@ -154,3 +154,39 @@ const sortDirectories= ( myArray, parent ) => {
 }
 
 console.log( sortDirectories( data, null ) );
+
+
+
+
+var endorsements = [
+  { skill: 'css', user: 'Bill' },
+  { skill: 'javascript', user: 'Chad' },
+  { skill: 'javascript', user: 'Bill' },
+  { skill: 'css', user: 'Sue' },
+  { skill: 'javascript', user: 'Sue' },
+  { skill: 'html', user: 'Sue' }
+];
+/*
+[
+  { skill: 'javascript', user: ['Chad', 'Bill', 'Sue'], count: 3 },
+  { skill: 'css', user: ['Sue', 'Bill'], count: 2 },
+  { skill: 'html', user: ['Sue'], count: 1 }
+];
+*/
+
+const converToFormat = ( arr ) => {
+    const getMap = ( arr ) =>
+      arr.reduce( ( acc, { skill, user } ) => {
+        acc[ skill ] = [ ...( acc[ skill ] ? acc[ skill ] : [] ), user ];
+        return acc;
+      }, {} );
+
+    const result = []
+    const mapped = getMap( arr );
+    for( let key in mapped ) {
+      result.push(
+        { skill : key, user : mapped[ key ], length : mapped[ key ].length }
+      );
+    }
+    return result;
+}
