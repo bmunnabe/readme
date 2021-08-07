@@ -149,7 +149,7 @@ const sortDirectories= ( myArray, parent ) => {
   const output = [];
   myArray
     .filter( ( item ) => item.parent === parent )
-    .forEach( ( item ) => output.push( { ...item, child : sortDirectories( arr, item.name ) } ) )
+    .forEach( ( item ) => output.push( { ...item, child : sortDirectories( myArray, item.name ) } ) )
   return output;
 }
 
