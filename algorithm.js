@@ -1,3 +1,40 @@
+// MERGE SORT
+const merge = ( left, right ) => {
+  let arr = [];
+  while ( left.length && right.length ) {
+    if ( left[ 0 ] < right[ 0 ] ) {
+      arr.push( left.shift() );
+    } else {
+      arr.push( right.shift() );
+    }
+  }
+  return [ ...arr, ...left, ...right ];
+}
+const mergeSort = ( arr ) => {
+  const half = arr.length / 2;
+  if ( arr.length < 2 ) {
+     return arr;
+  }
+  const left = arr.splice( 0, half );
+  return merge( sort( left ), sort( arr ) );
+}
+console.log( mergeSort( [ 4,1,5,7,1 ] ) )
+
+
+// BUBBLE SORT
+const sortingArray = ( arr ) => {
+  for ( let i = 0; i < arr.length; i++ ) {
+    for ( let j = i + 1; j < arr.length; j++ ) {
+      if ( arr[ i ] > arr[ j ] ) {
+        [ arr[ i ], arr[ j ] ] = [ arr[ j ], arr[ i ] ];
+      } 
+    }
+  }
+  return arr;
+}
+// console.log( sortingArr( [ 2, 4, 5, 1, 3, 5, 8 ]) ); , Output : [1, 2, 3, 4, 5, 5, 8]
+
+//----------------------------------------------------------//
 /*
 getMinimumReversalOfCoins:
 There are N coins, each showing either heads or tails. We would like all the coins to form a sequence of alternating heads and tails. What is the minimum number of coins that must be reversed to achieve this?
@@ -85,17 +122,7 @@ const sortingArray = ( arr ) => {
   return arr;
 }
 
-const sortingArray = ( arr ) => {
-  for ( let i = 0; i < arr.length; i++ ) {
-    for ( let j = i + 1; j < arr.length; j++ ) {
-      if ( arr[ i ] > arr[ j ] ) {
-        [ arr[ i ], arr[ j ] ] = [ arr[ j ], arr[ i ] ];
-      } 
-    }
-  }
-  return arr;
-}
-// console.log( sortingArr( [ 2, 4, 5, 1, 3, 5, 8 ]) ); , Output : [1, 2, 3, 4, 5, 5, 8]
+
 
 
 const isEvenOrOdd = ( n ) => n % 2 ? 'ODD' : 'EVEN';
