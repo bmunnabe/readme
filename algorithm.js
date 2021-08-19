@@ -10,6 +10,8 @@ const merge = ( left, right ) => {
   }
   return [ ...arr, ...left, ...right ];
 }
+
+
 const mergeSort = ( arr ) => {
   const half = arr.length / 2;
   if ( arr.length < 2 ) {
@@ -217,3 +219,47 @@ const converToFormat = ( arr ) => {
     }
     return result;
 }
+
+
+parentArray = [ 5, 10, 15, 20, 25, 30 ]
+childArray = [ 10, 20, 30 ] // true
+// childArray2 = [15, 5, 30] // false
+// childArray3 = [5, 10, 30, 40]  // false
+ 
+ 
+ function isSeq( parent, child ) {
+   let result;
+ 	 for ( let i = 0; i < child.length; i++ ) {
+   		const item = child[ i ];
+   		const index = parent.indexOf( item );
+
+        if ( index === -1 ) {
+          result = false;
+          break;
+        }
+
+        const nextItem = child[ i + 1 ];
+        const nextIndex = parent.indexOf( nextItem );
+        if ( nextItem && ( nextIndex === -1 || index > nextIndex ) ) {
+          result = false;
+          break;
+        }
+      
+    	result = true;
+   }
+    return result;
+ }
+
+
+
+// FLAT ARRAY |   [ 0, 1, 2, [3, 4], [5, 6, 7] ]
+function flatten( items ) {
+   const result = [];
+   items.forEach(
+    ( ele ) => Array.isArray( ele )
+      ? result.push( ...flatten( ele ) )
+      : result.push( ele )
+   );
+   return result;
+}
+// or  [ 0, 1, 2, [3, 4], [5, 6, 7] ].toString().split(',')
