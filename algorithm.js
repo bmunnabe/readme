@@ -1,3 +1,8 @@
+//INFINITE CURRY
+const fn = ( a ) => ( b ) => !b ? a : fn( a +b );
+fn(1)(2)(3)4(5)() // 10
+
+
 // MERGE SORT
 const merge = ( left, right ) => {
   let arr = [];
