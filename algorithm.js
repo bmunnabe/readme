@@ -10,6 +10,20 @@ fn(1)(2)(3)4(5)() // 10
 
 
 
+
+const maxSubArrss = ( ...num ) => {
+    let max = num[ 0 ];
+    let sum = num[ 0 ];
+    for ( let i = 1; i < num.length; i++ ) {
+        sum =  sum > 0 ? sum + num[ i ] : num[ i ]; //  or   sum =  sum + num[ i ] > num[ i ] ? sum + num[ i ] : num[ i ];
+        max = Math.max( sum, max ); 
+    }
+    return max;
+}
+maxSubArrss(-2,1,-3,4,-1,2,1,-5,4) // 6
+
+
+
 // MERGE SORT
 const merge = ( left, right ) => {
   let arr = [];
