@@ -3,6 +3,13 @@ const fn = ( a ) => ( b ) => !b ? a : fn( a +b );
 fn(1)(2)(3)4(5)() // 10
 
 
+//LARGEST NUMBER 
+[ 3,30,34,5,9 ].sort( ( a, b ) => ( '' + b + a )-( '' + a + b ) ).join( '' );  // 9534330
+// or 
+[ 3,30,34,5,9 ].map( String ).sort( ( a, b ) => ( a + b )-( b - a ) ).join( '' )
+
+
+
 // MERGE SORT
 const merge = ( left, right ) => {
   let arr = [];
