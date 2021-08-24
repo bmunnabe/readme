@@ -6,7 +6,6 @@ const _search = ( arr, v ) => {
             result = true;
             break;
         }
-        console.log( arr );
     }
     return result || arr.includes( v );
 }
@@ -17,7 +16,35 @@ _search( [ 7,1,2,3,4,5,6,9,11,22,33,44,55,66,77,88,99,99,9], 99 )
  *      const half = Math.floor( arr.length / 2 ); 
  *      return _search( [ ...arr ].slice( 0, half ), v ) || _search( [ ...arr ].slice( half ), v );
  *   }
+ 
+const _search = ( input, v ) => {
+    let result = false;
+
+    let arrCopy = [ ...input ];
+
+    while ( arrCopy.length > 4 ) {
+        const half = Math.floor( arrCopy / 2 );
+
+        const arr = [ ...arrCopy ].slice( 0, half );
+        if ( arr.shift() === v || arr.pop() === v ) {
+            result = true;
+            break;
+        }
+
+        const arr2 = [ ...arrCopy ].slice( half ); 
+        if ( arr2.shift() === v || arr2.pop() === v ) {
+            result = true;
+            break;
+        }
+
+        arrCopy = [ ...arr, ...arr2 ];
+    }
+    return result || arrCopy.includes( v );
+}
+
+
  */
+
 
 //INFINITE CURRY
 const fn = ( a ) => ( b ) => !b ? a : fn( a +b );
