@@ -1,3 +1,24 @@
+// SEARCHING 0(n/2)
+const _search = ( arr, v ) => {
+    let result = false;
+    while ( arr.length > 2 ) {
+        if ( arr.shift() === v || arr.pop() === v ) {
+            result = true;
+            break;
+        }
+        console.log( arr );
+    }
+    return result || arr.includes( v );
+}
+_search( [ 7,1,2,3,4,5,6,9,11,22,33,44,55,66,77,88,99,99,9], 99 )
+
+/*
+ *   const divideintoFour = ( arr, v ) => {
+ *      const half = Math.floor( arr.length / 2 ); 
+ *      return _search( [ ...arr ].slice( 0, half ), v ) || _search( [ ...arr ].slice( half ), v );
+ *   }
+ */
+
 //INFINITE CURRY
 const fn = ( a ) => ( b ) => !b ? a : fn( a +b );
 fn(1)(2)(3)4(5)() // 10
