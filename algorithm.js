@@ -1,3 +1,21 @@
+var recaman = ( n ) => {
+    if ( n <= 0 ) {
+        return;
+    }
+    let arr = [ 0 ];
+    let prev = 0;
+    for ( let i = 1; i < n; i++ ) {
+        let curr = prev - i;
+        if ( curr < 0 || arr.includes( curr ) ) {
+            curr = prev + i;
+        }
+        arr.push( curr );
+        prev = curr;
+    }
+    return arr;
+}
+// recaman(17) [0, 1, 3, 6, 2, 7, 13, 20, 12, 21, 11, 22, 10, 23, 9, 24, 8]
+
 // SEARCHING 0(n/2)
 const _search = ( arr, v ) => {
     let result = false;
