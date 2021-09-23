@@ -9,7 +9,7 @@ export default function App() {
     if ( toggle ) {
       counter = setInterval( () => setTimer( ( timer ) => timer + 1 ), 1000 );
     }
-    return () => clearInterval(counter);
+    return () => clearInterval( counter );
   }, [ toggle ] );
 
   const handleReset = () => {
