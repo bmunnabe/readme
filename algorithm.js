@@ -1,15 +1,20 @@
-let str = "let";
-let permutation = (str, result) => {
-    if (str.length == 0) {
-        console.log(result);
-    }
-    for (let i = 0; i < str.length; i++) {
-        let rest = str.substring(0, i) + str.substring(i + 1)
-        permutation(rest, result + str[i])
+let permutation = ( str ) => {
+    const output = [];
+
+    const _permutation = ( str, combinations ) => {
+        if ( str.length === 0 ) {
+            output.push( combinations );
+        }
+        for ( let i = 0; i < str.length; i++ ) {
+            let rest = str.substring( 0, i ) + str.substring( i + 1 )
+            _permutation( rest, combinations + str[ i ] )
+        }
     }
 
+    _permutation( str, '' );
+    return output;
 }
-permutation(str, '')
+permutation( 'abc' )
 
 
 
